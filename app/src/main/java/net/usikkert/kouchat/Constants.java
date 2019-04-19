@@ -32,7 +32,7 @@ public interface Constants {
     /**
      * The name of the application.
      */
-    String APP_NAME = "KouChat";
+    String APP_NAME = "Lockdown Games";
 
     /**
      * The application version.
