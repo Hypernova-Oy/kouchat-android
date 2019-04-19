@@ -175,7 +175,7 @@ public class DefaultMessageResponder implements MessageResponder {
 
         wList.removeWaitingUser(newUser.getCode());
         controller.getUserList().add(newUser);
-        msgController.showSystemMessage(newUser.getNick() + " logged on from " + newUser.getIpAddress());
+        //msgController.showSystemMessage(newUser.getNick() + " logged on from " + newUser.getIpAddress());
     }
 
     /**
@@ -290,7 +290,7 @@ public class DefaultMessageResponder implements MessageResponder {
         chatState.setLoggedOn(true);
         me.setIpAddress(ipAddress);
         me.setHostName(networkUtils.getLocalHostName());
-        msgController.showSystemMessage("You logged on as " + me.getNick() + " from " + createHostInfo(me));
+        //msgController.showSystemMessage("You logged on as " + me.getNick() + " from " + createHostInfo(me));
         ui.showTopic();
     }
 
@@ -373,7 +373,7 @@ public class DefaultMessageResponder implements MessageResponder {
         me.setLastIdle(System.currentTimeMillis());
 
         if (!me.getIpAddress().equals(ipAddress) && chatState.isLoggedOn()) {
-            msgController.showSystemMessage("You changed ip from " + me.getIpAddress() + " to " + ipAddress);
+            //msgController.showSystemMessage("You changed ip from " + me.getIpAddress() + " to " + ipAddress);
             me.setIpAddress(ipAddress);
         }
     }
@@ -397,7 +397,7 @@ public class DefaultMessageResponder implements MessageResponder {
         user.setLastIdle(System.currentTimeMillis());
 
         if (!user.getIpAddress().equals(ipAddress)) {
-            msgController.showSystemMessage(user.getNick() + " changed ip from " + user.getIpAddress() + " to " + ipAddress);
+            //msgController.showSystemMessage(user.getNick() + " changed ip from " + user.getIpAddress() + " to " + ipAddress);
             user.setIpAddress(ipAddress);
         }
     }
