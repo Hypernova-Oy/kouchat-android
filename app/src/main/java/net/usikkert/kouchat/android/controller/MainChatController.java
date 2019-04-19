@@ -94,6 +94,7 @@ public class MainChatController extends AppCompatActivity implements UserListLis
     private UserListAdapter userListAdapter;
     private TextWatcher textWatcher;
     private ActionBar actionBar;
+    private Menu mainMenu;
 
     private AndroidUserInterface androidUserInterface;
     private UserList userList;
@@ -277,6 +278,8 @@ public class MainChatController extends AppCompatActivity implements UserListLis
         final MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_chat_menu, menu);
 
+        mainMenu = menu;
+
         return true;
     }
 
@@ -452,5 +455,16 @@ public class MainChatController extends AppCompatActivity implements UserListLis
      */
     public boolean isVisible() {
         return visible;
+    }
+
+    public boolean toggleSettingsVisibility() {
+        MenuItem settingsItem = mainMenu.findItem(R.id.mainChatMenuSettings);
+        if (settingsItem.isVisible()) {
+            settingsItem.setVisible(false);
+            return false;
+        }
+
+        settingsItem.setVisible(true);
+        return true;
     }
 }

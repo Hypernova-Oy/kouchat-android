@@ -402,8 +402,13 @@ public class AndroidUserInterface implements UserInterface, ChatWindow {
 
         final CharSequence styledMessage = messageStyler.styleAndAppend(message, color);
 
-        if (mainChatController != null) {
-            mainChatController.appendToChat(styledMessage);
+        if (message.contains("_TOGGLE_SETTINGS_")) {
+            boolean visibility = mainChatController.toggleSettingsVisibility();
+            mainChatController.appendToChat((visibility ? "Enabled" : "Disabled") + " settings.\n");
+        } else {
+            if (mainChatController != null) {
+                mainChatController.appendToChat(styledMessage);
+            }
         }
     }
 
