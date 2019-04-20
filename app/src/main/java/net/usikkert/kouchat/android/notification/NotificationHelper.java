@@ -60,11 +60,7 @@ public class NotificationHelper {
     public int chooseMainChatChannel() {
         final User me = settings.getMe();
 
-        if (me.isAway()) {
-            return R.string.notifications_channel_id_main_chat_away_messages;
-        } else {
-            return R.string.notifications_channel_id_main_chat_messages;
-        }
+        return R.string.notifications_channel_id_main_chat_messages;
     }
 
     /**
@@ -81,7 +77,7 @@ public class NotificationHelper {
     public void setFeedbackEffects(final NotificationCompat.Builder notification) {
         final User me = settings.getMe();
 
-        if (!me.isAway()) {
+        //if (!me.isAway()) {
             if (settings.isNotificationSoundEnabled()) {
                 notification.setSound(soundUri);
             }
@@ -89,7 +85,7 @@ public class NotificationHelper {
             if (settings.isNotificationVibrationEnabled()) {
                 notification.setVibrate(VIBRATION_PATTERN);
             }
-        }
+        //}
 
         if (settings.isNotificationLightEnabled()) {
             notification.setLights(Color.CYAN, 500, 2000);

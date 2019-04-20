@@ -72,8 +72,8 @@ class NotificationChannelSettings(private val context: Context) {
                 R.string.notifications_channel_id_service,
                 R.string.notifications_channel_name_service,
                 R.string.notifications_channel_description_service,
-                NotificationManager.IMPORTANCE_LOW,
-                false, false, false,
+                NotificationManager.IMPORTANCE_MAX,
+                true, true, true,
                 Notification.VISIBILITY_PUBLIC)
     }
 
@@ -82,7 +82,7 @@ class NotificationChannelSettings(private val context: Context) {
                 R.string.notifications_channel_id_file_transfers,
                 R.string.notifications_channel_name_file_transfers,
                 R.string.notifications_channel_description_file_transfers,
-                NotificationManager.IMPORTANCE_HIGH,
+                NotificationManager.IMPORTANCE_MAX,
                 true, true, true,
                 Notification.VISIBILITY_PUBLIC)
     }
@@ -92,9 +92,9 @@ class NotificationChannelSettings(private val context: Context) {
                 R.string.notifications_channel_id_main_chat_messages,
                 R.string.notifications_channel_name_main_chat_messages,
                 R.string.notifications_channel_description_main_chat_messages,
-                NotificationManager.IMPORTANCE_DEFAULT,
+                NotificationManager.IMPORTANCE_MAX,
                 true, true, true,
-                Notification.VISIBILITY_PRIVATE)
+                Notification.VISIBILITY_PUBLIC)
     }
 
     private fun createMainChatAwayMessagesChannel(): NotificationChannel {
@@ -102,9 +102,9 @@ class NotificationChannelSettings(private val context: Context) {
                 R.string.notifications_channel_id_main_chat_away_messages,
                 R.string.notifications_channel_name_main_chat_away_messages,
                 R.string.notifications_channel_description_main_chat_away_messages,
-                NotificationManager.IMPORTANCE_LOW,
-                false, false, true,
-                Notification.VISIBILITY_PRIVATE)
+                NotificationManager.IMPORTANCE_MAX,
+                true, true, true,
+                Notification.VISIBILITY_PUBLIC)
     }
 
     private fun createPrivateChatMessagesChannel(): NotificationChannel {
@@ -112,9 +112,9 @@ class NotificationChannelSettings(private val context: Context) {
                 R.string.notifications_channel_id_private_chat_messages,
                 R.string.notifications_channel_name_private_chat_messages,
                 R.string.notifications_channel_description_private_chat_messages,
-                NotificationManager.IMPORTANCE_DEFAULT,
+                NotificationManager.IMPORTANCE_MAX,
                 true, true, true,
-                Notification.VISIBILITY_PRIVATE)
+                Notification.VISIBILITY_PUBLIC)
     }
 
     private fun createChannel(@StringRes id: Int,
