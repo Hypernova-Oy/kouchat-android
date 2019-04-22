@@ -42,6 +42,7 @@ import net.usikkert.kouchat.misc.CommandException;
 import net.usikkert.kouchat.misc.CommandParser;
 import net.usikkert.kouchat.misc.Controller;
 import net.usikkert.kouchat.misc.ErrorHandler;
+import net.usikkert.kouchat.misc.Message;
 import net.usikkert.kouchat.misc.MessageController;
 import net.usikkert.kouchat.misc.Topic;
 import net.usikkert.kouchat.misc.User;
@@ -397,17 +398,19 @@ public class AndroidUserInterface implements UserInterface, ChatWindow {
     }
 
     @Override
-    public void appendToChat(final String message, final int color) {
+    public void appendToChat(final Message msg, final int color) {
+        String message = msg.getMessage();
         Validate.notEmpty(message, "Message can not be empty");
 
         final CharSequence styledMessage = messageStyler.styleAndAppend(message, color);
 
         if (message.contains("_TOGGLE_SETTINGS_")) {
             boolean visibility = mainChatController.toggleSettingsVisibility();
-            mainChatController.appendToChat((visibility ? "Enabled" : "Disabled") + " settings.\n");
+            Message hax = new Message((visibility ? "Enabled" : "Disabled") + " settings.\n", new User("system", -1));
+            mainChatController.appendToChat(hax);
         } else {
             if (mainChatController != null) {
-                mainChatController.appendToChat(styledMessage);
+                mainChatController.appendToChat(msg);
             }
         }
     }

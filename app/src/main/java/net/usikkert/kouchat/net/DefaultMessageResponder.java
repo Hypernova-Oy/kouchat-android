@@ -29,6 +29,7 @@ import net.usikkert.kouchat.message.CoreMessages;
 import net.usikkert.kouchat.misc.ChatState;
 import net.usikkert.kouchat.misc.CommandException;
 import net.usikkert.kouchat.misc.Controller;
+import net.usikkert.kouchat.misc.Message;
 import net.usikkert.kouchat.misc.MessageController;
 import net.usikkert.kouchat.misc.Topic;
 import net.usikkert.kouchat.misc.User;
@@ -100,9 +101,10 @@ public class DefaultMessageResponder implements MessageResponder {
     public void messageArrived(final int userCode, final String msg, final int color) {
         if (!controller.isNewUser(userCode)) {
             final User user = controller.getUser(userCode);
+            final Message message = new Message(msg, user);
 
             if (!user.isAway()) {
-                msgController.showUserMessage(user.getNick(), msg, color);
+                msgController.showUserMessage(message, color);
 
                 // Visible but not in front
                 if (ui.isVisible() && !ui.isFocused()) {

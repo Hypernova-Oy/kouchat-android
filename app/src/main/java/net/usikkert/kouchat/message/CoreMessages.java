@@ -22,6 +22,9 @@
 
 package net.usikkert.kouchat.message;
 
+import net.usikkert.kouchat.misc.Message;
+import net.usikkert.kouchat.misc.User;
+
 import org.jetbrains.annotations.PropertyKey;
 
 /**

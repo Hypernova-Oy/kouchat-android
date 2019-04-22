@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <color name="preference_fallback_accent_color">@color/accent_material_light</color>
+  <color name="speech_bubble_agent">#2b5278</color>
+  <color name="speech_bubble_agent_incoming">#182533</color>
 </resources>

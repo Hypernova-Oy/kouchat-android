@@ -255,7 +255,7 @@ public class PrivateChatController extends AppCompatActivity {
             public void run() {
                 // If rotating fast, this activity could already be destroyed before this runs
                 if (!destroyed) {
-                    controllerUtils.scrollTextViewToBottom(privateChatView, privateChatScroll);
+                    //controllerUtils.scrollTextViewToBottom(privateChatView, privateChatScroll);
                 }
             }
         }, ControllerUtils.ONE_SECOND);
@@ -274,7 +274,7 @@ public class PrivateChatController extends AppCompatActivity {
                 // Just scroll somewhere and click on the text to remove focus from the input field.
                 // Also fixes the annoying jumping scroll that happens sometimes.
                 if (privateChatInput.hasFocus()) {
-                    controllerUtils.scrollTextViewToBottom(privateChatView, privateChatScroll);
+                    //controllerUtils.scrollTextViewToBottom(privateChatView, privateChatScroll);
                 }
             }
         });

@@ -24,9 +24,9 @@ package net.usikkert.kouchat.android.controller;
 
 import net.usikkert.kouchat.android.component.LinkMovementMethodWithSelectSupport;
 
+import android.support.v7.widget.RecyclerView;
 import android.text.NoCopySpan;
 import android.text.Spannable;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 /**
@@ -45,11 +45,11 @@ public class ControllerUtils {
      * @param textView The text view to scroll.
      * @param scrollView The surrounding scroll view.
      */
-    public void scrollTextViewToBottom(final TextView textView, final ScrollView scrollView) {
+    public void scrollTextViewToBottom(final TextView textView, final RecyclerView scrollView) {
         scrollView.post(new Runnable() {
             @Override
             public void run() {
-                scrollView.smoothScrollTo(0, scrollView.getBottom() + textView.getHeight());
+                scrollView.scrollToPosition(scrollView.getAdapter().getItemCount() - 1);
             }
         });
     }

@@ -22,6 +22,8 @@
 
 package net.usikkert.kouchat.ui;
 
+import net.usikkert.kouchat.misc.Message;
+
 /**
  * This interface is used by other layers to communicate directly with
  * the chat window, without needing to know which kind of user interface
@@ -37,5 +39,5 @@ public interface ChatWindow {
      * @param message The text to add to the chat.
      * @param color The color to show the text in.
      */
-    void appendToChat(String message, int color);
+    void appendToChat(Message message, int color);
 }

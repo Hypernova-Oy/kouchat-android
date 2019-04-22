@@ -33,6 +33,8 @@ import net.usikkert.kouchat.android.service.ChatServiceBinder;
 import net.usikkert.kouchat.android.userlist.UserListAdapter;
 import net.usikkert.kouchat.android.userlist.UserListAdapterWithChatState;
 import net.usikkert.kouchat.event.UserListListener;
+import net.usikkert.kouchat.message.MessageListAdapter;
+import net.usikkert.kouchat.misc.Message;
 import net.usikkert.kouchat.misc.User;
 import net.usikkert.kouchat.misc.UserList;
 
@@ -45,9 +47,12 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -57,6 +62,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Controller for the main chat.
@@ -90,7 +98,8 @@ public class MainChatController extends AppCompatActivity implements UserListLis
     private EditText mainChatInput;
     private ListView mainChatUserList;
     private TextView mainChatView;
-    private ScrollView mainChatScroll;
+    private RecyclerView mainChatScroll;
+    private MessageListAdapter mMessageAdapter;
     private UserListAdapter userListAdapter;
     private TextWatcher textWatcher;
     private ActionBar actionBar;
@@ -113,14 +122,17 @@ public class MainChatController extends AppCompatActivity implements UserListLis
 
         mainChatInput = findViewById(R.id.mainChatInput);
         mainChatUserList = findViewById(R.id.mainChatUserList);
-        mainChatView = findViewById(R.id.mainChatView);
-        mainChatScroll = findViewById(R.id.mainChatScroll);
         actionBar = getSupportActionBar();
+
+        mainChatScroll = (RecyclerView) findViewById(R.id.mainChatScroll);
+        mMessageAdapter = new MessageListAdapter(this, (new ArrayList<Message>()));
+        mainChatScroll.setLayoutManager(new LinearLayoutManager(this));
+        mainChatScroll.setAdapter(mMessageAdapter);
 
         registerMainChatInputListener();
         registerMainChatTextListener();
         registerUserListClickListener();
-        controllerUtils.makeLinksClickable(mainChatView);
+        //controllerUtils.makeLinksClickable(mainChatView);
         setupMainChatUserList();
         openKeyboard();
 
@@ -247,7 +259,7 @@ public class MainChatController extends AppCompatActivity implements UserListLis
         mainChatInput.setOnKeyListener(null);
         mainChatUserList.setOnItemClickListener(null);
         mainChatUserList.setAdapter(null);
-        controllerUtils.removeReferencesToTextViewFromText(mainChatView);
+        //controllerUtils.removeReferencesToTextViewFromText(mainChatView);
         controllerUtils.removeReferencesToTextViewFromText(mainChatInput);
 
         androidUserInterface = null;
@@ -363,14 +375,14 @@ public class MainChatController extends AppCompatActivity implements UserListLis
         return new Intent(this, ChatService.class);
     }
 
-    public void appendToChat(final CharSequence message) {
+    public void appendToChat(final Message message) {
         runOnUiThread(new Runnable() {
             public void run() {
                 if (destroyed) {
                     return; // If rotating fast, this activity could already be destroyed before this runs
                 }
 
-                mainChatView.append(message);
+                mMessageAdapter.addMessage(message);
 
                 // Allow a way to avoid automatic scrolling to the bottom.
                 // Just scroll somewhere and click on the text to remove focus from the input field.
@@ -389,7 +401,7 @@ public class MainChatController extends AppCompatActivity implements UserListLis
     }
 
     public void updateChat(final CharSequence savedChat) {
-        mainChatView.setText(savedChat);
+        //mainChatView.setText(savedChat);
 
         // Run this after 1 second, because right after a rotate the layout is null and it's not possible to scroll yet
         new Handler().postDelayed(new Runnable() {

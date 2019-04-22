@@ -22,6 +22,8 @@
 
 package net.usikkert.kouchat.message;
 
+import net.usikkert.kouchat.misc.Message;
+
 /**
  * Interface for getting messages in the correct language.
  *

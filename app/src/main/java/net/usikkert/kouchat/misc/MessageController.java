@@ -75,9 +75,9 @@ public class MessageController {
      * @param message The message the user wrote.
      * @param color The color the user chose for the message.
      */
-    public void showUserMessage(final String user, final String message, final int color) {
-        final String msg = " <" + user + ">: " + message;
-        chat.appendToChat(msg, color);
+    public void showUserMessage(final Message message, final int color) {
+        final String msg = " <" + message.getSender().getNick() + ">: " + message.getMessage();
+        chat.appendToChat(message, color);
         cLog.append(msg);
     }
 
@@ -89,10 +89,13 @@ public class MessageController {
      *
      * @param message The system message to show.
      */
-    public void showSystemMessage(final String message) {
-        final String msg = message;
-        chat.appendToChat(msg, settings.getSysColor());
+    public void showSystemMessage(final Message message) {
+        final String msg = message.getMessage();
+        chat.appendToChat(message, settings.getSysColor());
         cLog.append(msg);
+    }
+    public void showSystemMessage(final String message) {
+        showSystemMessage(new Message(message, new User("system", -1)));
     }
 
     /**
@@ -103,10 +106,13 @@ public class MessageController {
      *
      * @param message The message written by the application user.
      */
-    public void showOwnMessage(final String message) {
-        final String msg = "<" + me.getNick() + ">: " + message;
-        chat.appendToChat(msg, settings.getOwnColor());
+    public void showOwnMessage(final Message message) {
+        final String msg = "<" + me.getNick() + ">: " + message.getMessage();
+        chat.appendToChat(message, settings.getOwnColor());
         cLog.append(msg);
+    }
+    public void showOwnMessage(final String message) {
+        showOwnMessage(new Message(message, me));
     }
 
     /**
