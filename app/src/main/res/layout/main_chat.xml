@@ -15,7 +15,7 @@
       android:layout_alignEnd="@+id/mainChatUserList"
       android:layout_alignRight="@+id/mainChatUserList"
       android:layout_alignParentLeft="true"
-      android:background="#fff">
+      android:background="#272727">
 
     <TextView
         android:id="@+id/mainChatView"
@@ -35,12 +35,18 @@
       android:layout_alignParentRight="true"
       android:visibility="gone" />
 
-  <EditText android:id="@+id/mainChatInput"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:imeOptions="actionSend|flagNoFullscreen"
-            android:singleLine="true"
-            android:layout_alignParentBottom="true"/>
+    <EditText
+        android:id="@+id/mainChatInput"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#373737"
+        android:imeOptions="actionSend|flagNoFullscreen"
+        android:inputType="text"
+        android:singleLine="true"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="24sp"
+        android:padding="10dp" />
 
 </RelativeLayout>

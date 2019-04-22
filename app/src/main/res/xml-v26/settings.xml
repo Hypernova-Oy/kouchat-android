@@ -15,7 +15,7 @@
       android:key="@string/settings_own_color_key"
       android:title="@string/settings_own_color_title"
       android:summary="@string/settings_own_color_summary"
-      android:defaultValue="-15987646"
+      android:defaultValue="16777215"
       android:dialogTitle="@string/settings_own_color_title"
       android:dialogIcon="@drawable/ic_dialog"/>
 
@@ -23,7 +23,7 @@
       android:key="@string/settings_sys_color_key"
       android:title="@string/settings_sys_color_title"
       android:summary="@string/settings_sys_color_summary"
-      android:defaultValue="-16759040"
+      android:defaultValue="-8421504"
       android:dialogTitle="@string/settings_sys_color_title"
       android:dialogIcon="@drawable/ic_dialog"/>
 
@@ -31,7 +31,8 @@
       android:widgetLayout="@layout/two_state_preference"
       android:key="@string/settings_wake_lock_key"
       android:title="@string/settings_wake_lock_title"
-      android:summary="@string/settings_wake_lock_summary"/>
+      android:summary="@string/settings_wake_lock_summary"
+      android:defaultValue="true" />
 
   <Preference
       android:title="@string/settings_notification_open_external_title"

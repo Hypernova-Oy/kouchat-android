@@ -44,7 +44,7 @@ import android.widget.ImageView;
 public class HoloColorPickerPreference extends DialogPreference {
 
     /** Used if default value is unspecified in xml. */
-    private final int defaultColor = Color.BLACK;
+    private final int defaultColor = Color.WHITE;
 
     /** The color that apply now. */
     private int persistedColor;

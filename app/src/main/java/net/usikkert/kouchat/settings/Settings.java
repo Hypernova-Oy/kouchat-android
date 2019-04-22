@@ -22,6 +22,8 @@
 
 package net.usikkert.kouchat.settings;
 
+import android.graphics.Color;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -101,8 +103,8 @@ public class Settings {
         me = meFactory.createMe();
         listeners = new ArrayList<>();
         browser = "";
-        ownColor = -15987646;
-        sysColor = -16759040;
+        ownColor = Color.WHITE;
+        sysColor = Color.GRAY;
         sound = true;
         smileys = true;
         systemTray = true;
